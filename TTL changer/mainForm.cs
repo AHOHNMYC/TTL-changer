@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace TTL_changer {
@@ -40,7 +34,7 @@ namespace TTL_changer {
                 Process netsh = new Process();
                 netsh.StartInfo.FileName = "netsh";
                 netsh.StartInfo.Arguments = "int ipv4 show global";
-                netsh.StartInfo.CreateNoWindow = false;
+                netsh.StartInfo.CreateNoWindow = true;
                 netsh.StartInfo.UseShellExecute = false;
                 netsh.StartInfo.RedirectStandardOutput = true;
                 netsh.OutputDataReceived += (sender, args) => {
@@ -55,22 +49,34 @@ namespace TTL_changer {
                 netsh.Start();
                 netsh.BeginOutputReadLine();
                 netsh.WaitForExit();
+                Activate();
 
                 return currentTTLvalue;
             }
             set {
                 Process netsh = new Process();
+                netsh.StartInfo.CreateNoWindow = true;
+                netsh.StartInfo.UseShellExecute = false;
                 netsh.StartInfo.FileName = "netsh";
-                netsh.StartInfo.Arguments = "int ipv4 set global" + value;
-                netsh.Start();
-                netsh.StartInfo.Arguments = "int ipv6 set global" + value;
+                netsh.StartInfo.Arguments = "int ipv4 set global " + value;
                 netsh.Start();
                 netsh.WaitForExit();
+                netsh.StartInfo.Arguments = "int ipv6 set global " + value;
+                netsh.Start();
+                netsh.WaitForExit();
+                Activate();
             }
         }
 
         private void setTtl_Click(object sender, EventArgs e) {
-            currentTTL = decimal.ToByte(ttlUpDown.Value);
+            int newTTL = decimal.ToByte(ttlUpDown.Value);
+            currentTTL = newTTL;
+            if (currentTTL != newTTL) {
+                MessageBox.Show("TTL not changed!\nAre you an Administrator?", "ЕГГОГ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else {
+                updateTTLlabel();
+            }
+            ttlUpDown.Focus();
         }
     }
 }

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace TTL_changer {
@@ -14,6 +10,14 @@ namespace TTL_changer {
 
         private void exit_Click(object sender, EventArgs e) {
             Close();
+        }
+
+        private void githubLink_Click(object sender, EventArgs e) {
+            Process.Start("https://github.com/AHOHNMYC");
+        }
+
+        private void fourPdaLink_Click(object sender, EventArgs e) {
+            Process.Start("https://4pda.ru/forum/index.php?showtopic=689378#entry30785529");
         }
     }
 }

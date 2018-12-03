@@ -9,7 +9,7 @@ namespace TTL_changer {
         }
 
         private void exit_Click(object sender, EventArgs e) {
-            Application.Exit();
+            Close();
         }
 
         private void help_Click(object sender, EventArgs e) {
@@ -69,13 +69,12 @@ namespace TTL_changer {
         }
 
         private void setTtl_Click(object sender, EventArgs e) {
-            int newTTL = decimal.ToByte(ttlUpDown.Value);
+            int newTTL = decimal.ToInt32(ttlUpDown.Value);
             currentTTL = newTTL;
-            if (currentTTL != newTTL) {
-                MessageBox.Show("TTL not changed!\nAre you an Administrator?", "ЕГГОГ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } else {
+            if (currentTTL == newTTL)
                 updateTTLlabel();
-            }
+            else
+                MessageBox.Show("TTL not changed!", "ЕГГОГ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             ttlUpDown.Focus();
         }
     }

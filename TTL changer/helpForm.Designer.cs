@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(helpForm));
             this.helpText = new System.Windows.Forms.RichTextBox();
             this.exit = new System.Windows.Forms.Button();
             this.githubLink = new System.Windows.Forms.PictureBox();
@@ -43,7 +42,7 @@
             this.helpText.ReadOnly = true;
             this.helpText.Size = new System.Drawing.Size(316, 114);
             this.helpText.TabIndex = 1;
-            this.helpText.Text = resources.GetString("helpText.Text");
+            this.helpText.Text = "";
             // 
             // exit
             // 
@@ -62,7 +61,7 @@
             // 
             this.githubLink.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.githubLink.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.githubLink.Image = global::TTL_changer.Properties.Resources.fluidicon;
+            this.githubLink.Image = global::TTL_changer.Properties.Resources.gitHub;
             this.githubLink.Location = new System.Drawing.Point(135, 132);
             this.githubLink.Name = "githubLink";
             this.githubLink.Size = new System.Drawing.Size(32, 32);
@@ -74,7 +73,7 @@
             // 
             this.fourPdaLink.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.fourPdaLink.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.fourPdaLink.Image = ((System.Drawing.Image)(resources.GetObject("fourPdaLink.Image")));
+            this.fourPdaLink.Image = global::TTL_changer.Properties.Resources.fourPda;
             this.fourPdaLink.Location = new System.Drawing.Point(173, 132);
             this.fourPdaLink.Name = "fourPdaLink";
             this.fourPdaLink.Size = new System.Drawing.Size(32, 32);
@@ -93,10 +92,10 @@
             this.Controls.Add(this.exit);
             this.Controls.Add(this.helpText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "helpForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Справка";
+            this.Load += new System.EventHandler(this.helpForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.githubLink)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fourPdaLink)).EndInit();
             this.ResumeLayout(false);

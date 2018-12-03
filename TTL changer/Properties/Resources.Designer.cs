@@ -63,9 +63,19 @@ namespace TTL_changer.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap fluidicon {
+        internal static System.Drawing.Bitmap fourPda {
             get {
-                object obj = ResourceManager.GetObject("fluidicon", resourceCulture);
+                object obj = ResourceManager.GetObject("fourPda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gitHub {
+            get {
+                object obj = ResourceManager.GetObject("gitHub", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
